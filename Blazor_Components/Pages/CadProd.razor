@@ -1,0 +1,10 @@
+﻿@page "/CadProd"
+
+<h3>Cadastro de Produtos</h3>
+
+<CadastroProduto produto="produto" Lista="produtos" />
+
+@code{
+    public List<Produto> produtos = Produto.Produtos;
+    public Produto produto = new Produto();
+}

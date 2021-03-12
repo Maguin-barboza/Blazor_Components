@@ -1,0 +1,61 @@
+﻿
+
+@if (Lista is null)
+{
+    <p> Carregando... </p>
+}
+else if (!Lista.Any())
+{
+    <p> Não há produtos cadastrados</p>
+}
+else
+{
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Remover</th>
+                    <th>Id</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (Produto prod in Lista)
+                {
+                    <tr>
+                        <td>
+                            <button @onclick="@(() => prod.Remover())"> <i class="oi oi-trash" /> </button>
+                        </td>
+                        <td>@prod.Id</td>
+                        <td>@prod.Descrição</td>
+                        <td>@prod.Preço</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<div>
+    <p>Descrição: <input @bind="produto.Descrição" /> </p>
+    <p>Preço: <input @bind="produto.Preço" /> </p>
+    <button @onclick="InserirProduto">Cadastrar Produto</button>
+</div>
+
+
+@code {
+
+    [Parameter]
+    public Produto produto { get; set; }
+
+    [Parameter]
+    public List<Produto> Lista { get; set; }
+
+    public void InserirProduto()
+    {
+        produto.Inserir();
+        produto = new Produto();
+    }
+}
