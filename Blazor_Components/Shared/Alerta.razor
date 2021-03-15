@@ -1,0 +1,15 @@
+﻿<div>
+    @if (@ChildContent is null)
+    {
+        <span style="color:black">Texto Padrão</span>
+    }
+    else
+    {
+        @ChildContent;
+    }
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

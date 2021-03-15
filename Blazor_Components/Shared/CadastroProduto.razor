@@ -2,11 +2,19 @@
 
 @if (Lista is null)
 {
-    <p> Carregando... </p>
-}
+    <Alerta>
+        <span>
+            <span style="color:blue">Carregando produtos...</span>
+        </span>
+    </Alerta>
+} 
 else if (!Lista.Any())
 {
-    <p> Não há produtos cadastrados</p>
+    <Alerta>
+        <div>
+            <p>Não há produtos cadastrados.</p>
+        </div>
+    </Alerta>
 }
 else
 {
